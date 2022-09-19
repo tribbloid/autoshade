@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.tribbloids.autoshade</groupId>
+  <artifactId>repack-maven</artifactId>
+  <version>0.0.1</version>
+
+<!--repack the latest json4s-->
+  <packaging>jar</packaging>
+
+  <properties>
+    <vs.scalaBinaryV>2.12</vs.scalaBinaryV>
+    <vs.scalaV>${vs.scalaBinaryV}.16</vs.scalaV>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.json4s</groupId>
+      <artifactId>json4s-jackson_${vs.scalaBinaryV}</artifactId>
+      <version>4.0.4</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.2.4</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+
+            <configuration>
+              <!--              <createSourcesJar>true</createSourcesJar>-->
+
+              <createDependencyReducedPom>true</createDependencyReducedPom>
+              <dependencyReducedPomLocation>${project.build.directory}/dependency-reduced-pom.xml</dependencyReducedPomLocation>
+              <!--              <generateUniqueDependencyReducedPom>true</generateUniqueDependencyReducedPom>-->
+
+              <keepDependenciesWithProvidedScope>false</keepDependenciesWithProvidedScope>
+              <promoteTransitiveDependencies>false</promoteTransitiveDependencies>
+
+              <!--              <shadedClassifierName>${spark.classifier}</shadedClassifierName>-->
+              <relocations>
+                <relocation>
+                  <pattern>org.json4s</pattern>
+                  <shadedPattern>repacked.test1.org.json4s</shadedPattern>
+                </relocation>
+              </relocations>
+
+              <filters>
+                <filter>
+                  <artifact>*:*</artifact>
+                  <excludes>
+                    <exclude>META-INF/*.SF</exclude>
+                    <exclude>META-INF/*.DSA</exclude>
+                    <exclude>META-INF/*.RSA</exclude>
+                    <exclude>META-INF/services/javax.*</exclude>
+                  </excludes>
+                </filter>
+              </filters>
+              <!--              <finalName>${project.artifactId}-${project.version}</finalName>-->
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
