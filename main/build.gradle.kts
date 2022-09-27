@@ -9,6 +9,6 @@ dependencies {
 
     api(project(":repack:gradle", configuration = "shadow"))
 
-    api("com.tribbloids.autoshade:repack-maven:0.0.1")
-    api("com.tribbloids.autoshade:repack-sbt_${vs.scalaBinaryV}:0.0.1:assembly")
+    api("com.tribbloids.autoshade:repack-maven:0.0.1-SNAPSHOT")
+    api("com.tribbloids.autoshade:repack-sbt_${vs.scalaBinaryV}:0.0.1-SNAPSHOT:assembly")
 }

@@ -6,7 +6,7 @@
 
   <groupId>com.tribbloids.autoshade</groupId>
   <artifactId>repack-maven</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.1-SNAPSHOT</version>
 
 <!--repack the latest json4s-->
   <packaging>jar</packaging>
@@ -45,7 +45,7 @@
               <dependencyReducedPomLocation>${project.build.directory}/dependency-reduced-pom.xml</dependencyReducedPomLocation>
               <!--              <generateUniqueDependencyReducedPom>true</generateUniqueDependencyReducedPom>-->
 
-              <keepDependenciesWithProvidedScope>false</keepDependenciesWithProvidedScope>
+              <keepDependenciesWithProvidedScope>true</keepDependenciesWithProvidedScope>
               <promoteTransitiveDependencies>false</promoteTransitiveDependencies>
 
               <!--              <shadedClassifierName>${spark.classifier}</shadedClassifierName>-->

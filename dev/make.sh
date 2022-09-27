@@ -11,9 +11,14 @@ mvn clean install
 
 cd ${FWDIR}/repack/sbt
 
-sbt clean;publishM2
+sbt "clean;publishM2"
 
 
 cd ${FWDIR}
 
 ${FWDIR}/gradlew clean testClasses
+
+
+cd ${FWDIR}/repack/sbtRef
+
+sbt "clean;publishM2"

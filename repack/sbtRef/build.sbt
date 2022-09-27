@@ -3,9 +3,9 @@ Global / onChangedBuildSource := ReloadOnSourceChanges
 
 lazy val commonSettings = Seq(
   organization := "com.tribbloids.autoshade",
-  name := "repack-sbt",
+  name := "repack-sbtRef",
   version := "0.0.1-SNAPSHOT",
-  scalaVersion := "2.13.9",
+  scalaVersion := "2.13.9"
 //  test in assembly := {},
   // If you are using a maven repository
   // https://www.scala-sbt.org/1.x/docs/Publishing.html
@@ -28,7 +28,7 @@ lazy val root = project
       "org.json4s" %% "json4s-jackson" % "4.0.4"
     ),
     addArtifact(
-      Artifact("repack-sbt", "assembly"),
+      Artifact("repack-sbtRef", "assembly"),
       sbtassembly.AssemblyKeys.assembly
     ),
     ThisBuild / assemblyMergeStrategy := {
@@ -46,19 +46,7 @@ lazy val root = project
       s"${name.value}-${scalaBinaryVersion.value}-${version.value}-assembly.jar"
     },
     ThisBuild / assemblyShadeRules := Seq(
-      ShadeRule.rename("org.json4s.**" -> "repacked.test3.org.json4s.@1").inAll
+      ShadeRule.rename("org.json4s.**" -> "repacked.test1.org.json4s.@1").inAll
     )
   )
   .enablePlugins(AssemblyPlugin)
-
-//lazy val uberJar = project
-//  .settings(
-//    publish / skip := true
-//  )
-//
-//lazy val cosmetic = project
-//  .settings(
-//    name := "repack-sbt-shaded",
-//    // I am sober. no dependencies.
-//    Compile / packageBin := (uberJar / assembly).value
-//  )
