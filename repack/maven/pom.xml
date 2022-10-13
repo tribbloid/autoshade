@@ -13,7 +13,7 @@
 
   <properties>
     <vs.scalaBinaryV>2.13</vs.scalaBinaryV>
-    <vs.scalaV>${vs.scalaBinaryV}.9</vs.scalaV>
+    <vs.scalaV>${vs.scalaBinaryV}.10</vs.scalaV>
   </properties>
 
   <dependencies>

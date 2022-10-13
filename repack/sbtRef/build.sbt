@@ -5,7 +5,7 @@ lazy val commonSettings = Seq(
   organization := "com.tribbloids.autoshade",
   name := "repack-sbtRef",
   version := "0.0.1-SNAPSHOT",
-  scalaVersion := "2.13.9"
+  scalaVersion := "2.13.10"
 //  test in assembly := {},
   // If you are using a maven repository
   // https://www.scala-sbt.org/1.x/docs/Publishing.html
